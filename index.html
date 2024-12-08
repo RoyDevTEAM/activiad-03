@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos vs Grupos - Roider Millares</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Enlace a la biblioteca Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #4A001F, #800033); /* Gradiente de fondo */
+            color: #ffffff;
+        }
+    
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4A001F, #800033); /* Gradiente de fondo */
+        }
+    
+        header a {
+            color: #ffffff;
+        }
+    
+        header a:hover {
+            color: #ccc;
+        }
+    
+        /* Hero Section */
+        #intro {
+            background: linear-gradient(135deg, #4A001F, #800033); /* Fondo con gradiente */
+        }
+    
+        .hero-text h1 {
+            color: #ffffff;
+        }
+    
+        .hero-text p {
+            color: #e5e5e5;
+        }
+    
+        .explore-button {
+            background-color: #D1002A; /* Rojo brillante */
+            color: #ffffff;
+            border-radius: 50px;
+        }
+    
+        .explore-button:hover {
+            background-color: #9e0021; /* Rojo más oscuro */
+        }
+    
+       
+    
+        /* Mobile Menu */
+        #mobile-menu {
+            background: #4A001F;
+        }
+    </style>
+    
+    <body class="font-sans">
+       <!-- Header -->
+<header class="fixed w-full bg-opacity-90 bg-gradient-to-r from-red-800 to-red-600 shadow-lg z-50 transition-all duration-300 ease-in-out">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <!-- Logo -->
+        <div class="text-xl font-bold flex items-center space-x-2">
+            <i class="fas fa-users text-white"></i>
+            <a href="#" class="text-white">Roider Millares</a>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-4">
+            <a href="#intro" class="text-white hover:text-gray-300 flex items-center">
+                <i class="fas fa-home mr-2"></i>Inicio
+            </a>
+            <a href="#objetivos" class="text-white hover:text-gray-300 flex items-center">
+                <i class="fas fa-bullseye mr-2"></i>Objetivos
+            </a>
+            <a href="#equipos" class="text-white hover:text-gray-300 flex items-center">
+                <i class="fas fa-users-cog mr-2"></i>Equipos
+            </a>
+            <a href="#contact" class="text-white hover:text-gray-300 flex items-center">
+                <i class="fas fa-envelope mr-2"></i>Contacto
+            </a>
+        </nav>
+
+        <!-- Hamburger Menu -->
+        <button id="menu-button" class="md:hidden text-white text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-red-700">
+        <nav class="flex flex-col p-4 space-y-2">
+            <a href="#intro" class="text-white hover:text-gray-300 flex items-center">
+                <i class="fas fa-home mr-2"></i>Inicio
+            </a>
+            <a href="#objetivos" class="text-white hover:text-gray-300 flex items-center">
+                <i class="fas fa-bullseye mr-2"></i>Objetivos
+            </a>
+            <a href="#equipos" class="text-white hover:text-gray-300 flex items-center">
+                <i class="fas fa-users-cog mr-2"></i>Equipos
+            </a>
+            <a href="#contact" class="text-white hover:text-gray-300 flex items-center">
+                <i class="fas fa-envelope mr-2"></i>Contacto
+            </a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section id="intro" class="h-screen flex items-center bg-cover bg-center relative pt-20 md:pt-0">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between relative z-10">
+        <!-- Text -->
+        <div class="text-left space-y-4 md:w-1/2 hero-text animate__animated animate__fadeInLeft">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white">Equipos vs Grupos</h1>
+            <p class="text-lg text-white opacity-90">Explora las diferencias clave entre equipos y grupos en un entorno organizacional, con creatividad, innovación y astucia.</p>
+            <a href="#objetivos" class="mt-4 inline-block px-6 py-3 explore-button bg-red-700 text-white rounded-lg shadow-xl hover:bg-red-800 transition-all">
+                <i class="fas fa-arrow-down mr-2"></i>Explorar Más
+            </a>
+        </div>
+
+        <!-- Image -->
+        <div class="md:w-1/2 mt-8 md:mt-0 hero-image animate__animated animate__fadeInRight">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/grupo-de-turistas-reunidos-alrededor-de-un-guia-turistico-13008732-10522547.png?f=webp" alt="Equipos vs Grupos" class="rounded-lg shadow-xl">
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Include Animate.css for animation effects -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Slide 1: Portada -->
+<section id="portada" class="h-screen flex items-center bg-gradient-to-r from-[#800033] to-[#4A001F] text-white">
+    <div class="max-w-5xl mx-auto text-center space-y-6 animate__animated animate__fadeIn">
+        <h1 class="text-5xl font-extrabold leading-tight">Equipos vs Grupos</h1>
+        <p class="text-xl font-medium">Innovación, creatividad, astucia y proactividad</p>
+        <ul class="text-left list-disc mx-auto max-w-xl animate__animated animate__fadeIn animate__delay-1s">
+            <li><strong>Actividad:</strong> Individual</li>
+            <li><strong>Tipo:</strong> Autónomo y Colaborativo</li>
+        </ul>
+    </div>
+</section>
+
+
+
+<!-- Slide 3: Objetivos de Aprendizaje -->
+<section id="objetivos" class="h-screen flex items-center bg-gradient-to-r from-[#800033] to-[#4A001F] text-white">
+    <div class="max-w-5xl mx-auto text-left space-y-6 animate__animated animate__fadeInUp">
+        <h2 class="text-4xl font-semibold">Objetivos de Aprendizaje</h2>
+        <ul class="list-disc ml-6 space-y-3 animate__animated animate__fadeInUp animate__delay-1s">
+            <li>Explicar la creciente popularidad de los equipos en las organizaciones.</li>
+            <li>Comparar equipos con grupos.</li>
+            <li>Identificar cuatro tipos de equipos.</li>
+            <li>Especificar características de equipos eficaces.</li>
+            <li>Mostrar cómo las organizaciones generan trabajo en equipo.</li>
+            <li>Condiciones para preferir individuos en lugar de equipos.</li>
+            <li>Concepción global de los equipos.</li>
+        </ul>
+        <div class="mt-6 flex justify-center">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/guia-turistica-esperando-turista-6905537-5673614.png?f=webp" alt="Objetivos" class="rounded-lg shadow-xl">
+        </div>
+    </div>
+</section>
+<!-- Slide 4: Diferencias entre Equipos y Grupos -->
+<section id="diferencias" class="h-screen flex items-center bg-gradient-to-r from-[#800033] to-[#4A001F] text-white">
+    <div class="max-w-5xl mx-auto text-left space-y-6">
+        <h2 class="text-4xl font-semibold text-white mb-8">Diferencias entre Equipos y Grupos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Grupo -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out text-[#800033]">
+                <h3 class="text-3xl font-semibold text-[#800033]">Grupo</h3>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li>Interacción para compartir información.</li>
+                    <li>Enfoque en objetivos individuales.</li>
+                </ul>
+            </div>
+            <!-- Equipo -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out text-[#800033]">
+                <h3 class="text-3xl font-semibold text-[#800033]">Equipo</h3>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li>Esfuerzo colectivo coordinado.</li>
+                    <li>Sinergia para alcanzar metas comunes.</li>
+                </ul>
+            </div>
+        </div>
+        <p class="mt-4 text-white"><strong>Ejemplo:</strong> Empresas como Google fomentan equipos para dinamismo y resultados.</p>
+    </div>
+</section>
+<!-- Lámina 5: Tipos de Equipos -->
+<section id="equipos" class="min-h-screen flex items-center justify-center p-6 bg-gradient-to-r from-[#800033] to-[#4A001F] text-white" id="lamina5">
+    <div class="max-w-4xl text-center">
+        <h2 class="text-5xl font-extrabold mb-8">Tipos de Equipos</h2>
+        
+        <!-- Contenido Dinámico con tarjetas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Tarjeta 1: Equipos de Solución de Problemas -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out text-[#800033]">
+                <h3 class="text-3xl font-semibold text-[#9B1C1C] mb-4">Equipos de Solución de Problemas</h3>
+                <p class="text-lg">Estos equipos están enfocados en encontrar soluciones a problemas específicos dentro de la organización. Se caracterizan por ser altamente colaborativos, con una fuerte orientación a la mejora continua.</p>
+            </div>
+            <!-- Tarjeta 2: Equipos Autogestionados -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out text-[#800033]">
+                <h3 class="text-3xl font-semibold text-[#9B1C1C] mb-4">Equipos Autogestionados</h3>
+                <p class="text-lg">Estos equipos operan sin supervisión directa y son responsables de la planificación, ejecución y evaluación de su propio trabajo. La autonomía es clave en su éxito.</p>
+            </div>
+        </div>
+
+        <!-- Sección adicional con tarjetas para más equipos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <!-- Tarjeta 3: Equipos Interfuncionales -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out text-[#800033]">
+                <h3 class="text-3xl font-semibold text-[#9B1C1C] mb-4">Equipos Interfuncionales</h3>
+                <p class="text-lg">Equipos conformados por miembros de diversos departamentos, con el objetivo de aportar diferentes perspectivas para mejorar procesos o resolver problemas complejos.</p>
+            </div>
+            <!-- Tarjeta 4: Equipos Virtuales -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out text-[#800033]">
+                <h3 class="text-3xl font-semibold text-[#9B1C1C] mb-4">Equipos Virtuales</h3>
+                <p class="text-lg">Este tipo de equipos trabaja a distancia, utilizando herramientas digitales para colaborar, compartir información y cumplir con objetivos comunes sin importar la ubicación geográfica.</p>
+            </div>
+        </div>
+
+        
+    </div>
+</section>
+
+<!-- Acordeón dinámico sin Bootstrap, solo con Tailwind CSS y JavaScript -->
+<section id="acordeon" class="bg-white py-12">
+    <div class="max-w-4xl mx-auto text-left">
+        <h2 class="text-4xl font-semibold text-[#800033] mb-6">Información Adicional</h2>
+        
+        <!-- Contenedor del acordeón -->
+        <div class="space-y-4">
+            <!-- Item 1 del acordeón -->
+            <div class="accordion-item border border-[#800033] rounded-lg">
+                <button class="accordion-header w-full text-left p-4 bg-[#800033] text-white text-xl font-semibold" onclick="toggleAccordion('collapseOne')">
+                    ¿Cómo aplicar lo aprendido?
+                </button>
+                <div id="collapseOne" class="accordion-content hidden p-4 text-lg bg-[#f5f5f5] text-[#800033]">
+                    Utiliza los conceptos aprendidos para definir las dinámicas de trabajo de tu equipo y las diferencias con los grupos.
+                </div>
+            </div>
+
+            <!-- Item 2 del acordeón -->
+            <div class="accordion-item border border-[#800033] rounded-lg">
+                <button class="accordion-header w-full text-left p-4 bg-[#800033] text-white text-xl font-semibold" onclick="toggleAccordion('collapseTwo')">
+                    Beneficios de aplicar los principios
+                </button>
+                <div id="collapseTwo" class="accordion-content hidden p-4 text-lg bg-[#f5f5f5] text-[#800033]">
+                    Aplicar estos principios mejorará la colaboración y el rendimiento general de los equipos, haciendo que las tareas se completen de forma más eficiente.
+                </div>
+            </div>
+
+            <!-- Item 3 del acordeón -->
+            <div class="accordion-item border border-[#800033] rounded-lg ">
+                <button class="accordion-header w-full text-left p-4 bg-[#800033] text-white text-xl font-semibold" onclick="toggleAccordion('collapseThree')">
+                    Casos de éxito
+                </button>
+                <div id="collapseThree" class="accordion-content hidden p-4 text-lg bg-[#f5f5f5] text-[#800033]">
+                    Compañías como Apple y Microsoft aplican estos principios para formar equipos altamente productivos y fomentar la innovación.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Script JavaScript para abrir y cerrar el acordeón -->
+<script>
+    function toggleAccordion(id) {
+        const content = document.getElementById(id);
+        // Alternar la visibilidad del contenido
+        content.classList.toggle('hidden');
+    }
+</script>
+
+<!-- Lámina 6: Características de Equipos Eficaces -->
+<section class="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-r from-[#800033] to-[#4A001F] text-white" id="lamina6">
+    <div class="max-w-4xl text-center mb-12">
+        <h2 class="text-5xl font-extrabold mb-8">Características de Equipos Eficaces</h2>
+        <div class="flex flex-wrap justify-center gap-8">
+            <!-- Tarjetas de características -->
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 w-72 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Confianza Mutua</h3>
+                <p>La base de cualquier equipo eficaz. La confianza permite un trabajo colaborativo y un ambiente positivo.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 w-72 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Habilidades Complementarias</h3>
+                <p>Equipos exitosos se construyen con la diversidad de habilidades, lo que permite resolver problemas desde diferentes perspectivas.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 w-72 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Liderazgo Claro</h3>
+                <p>El liderazgo efectivo guía al equipo hacia un objetivo común, asegurando un enfoque en los resultados.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 w-72 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Comunicación Abierta</h3>
+                <p>La transparencia y el intercambio de ideas facilitan la toma de decisiones y la resolución de conflictos.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 w-72 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Foco en Metas Comunes</h3>
+                <p>Los equipos deben estar alineados hacia un objetivo común, lo que mejora la eficiencia y el compromiso.</p>
+            </div>
+        </div>
+    </div>
+    <div class="w-full">
+        <h3 class="text-2xl text-center mb-6">Ejemplo Práctico: Empresas como <strong>Optimus Solutions</strong> logran grandes resultados al promover estos principios en sus equipos.</h3>
+        <div class="carousel relative">
+            <!-- Carrusel de imágenes -->
+            <div class="carousel-inner relative w-full overflow-hidden">
+                <div class="carousel-item absolute w-full opacity-0">
+                    <img src="https://us.123rf.com/450wm/graphictoons/graphictoons2406/graphictoons240600526/230854492-concepto-de-trabajo-en-equipo-y-asociaci%C3%B3n-los-empresarios-se-ayudan-entre-s%C3%AD-para-escalar-la.jpg?ver=6" alt="Imagen de equipo de trabajo" class="rounded-xl shadow-xl w-full">
+                </div>
+                <div class="carousel-item absolute w-full opacity-0">
+                    <img src="https://us.123rf.com/450wm/mariiasimakova/mariiasimakova2401/mariiasimakova240100092/222478216-ilustraci%C3%B3n-de-inicio-personas-cohete-bombilla-mesa-dise%C3%B1o-gr%C3%A1fico-vectorial-editable.jpg?ver=6" alt="Imagen de colaboración" class="rounded-xl shadow-xl w-full">
+                </div>
+                <div class="carousel-item absolute w-full opacity-0">
+                    <img src="https://via.placeholder.com/800x400" alt="Imagen de éxito" class="rounded-xl shadow-xl w-full">
+                </div>
+            </div>
+            <!-- Controles del carrusel -->
+            <button class="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-50 p-2 rounded-full" id="prevBtn">
+                &#10094;
+            </button>
+            <button class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-50 p-2 rounded-full" id="nextBtn">
+                &#10095;
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Script para el carrusel -->
+<script>
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const items = document.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+
+    function showItem(index) {
+        items.forEach((item, i) => {
+            item.style.opacity = i === index ? '1' : '0';
+            item.style.transition = 'opacity 0.7s ease-in-out';
+        });
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? items.length - 1 : currentIndex - 1;
+        showItem(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex === items.length - 1) ? 0 : currentIndex + 1;
+        showItem(currentIndex);
+    });
+
+    showItem(currentIndex); // Muestra la primera imagen al cargar
+</script>
+
+
+<!-- Lámina 7: Preferencias y Contextos Globales -->
+<section class="min-h-screen flex items-center justify-center p-6 bg-gradient-to-r from-[#800033] to-[#4A001F] text-white" id="lamina7">
+    <div class="max-w-4xl text-center">
+        <h2 class="text-5xl font-extrabold mb-8">Preferencias y Contextos Globales</h2>
+        
+        <!-- Sección de tarjetas para información -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Tarjeta 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out text-[#800033]">
+                <h3 class="text-3xl font-semibold text-[#9B1C1C] mb-4">¿Cuándo son preferibles los individuos?</h3>
+                <ul class="list-disc ml-6 space-y-4 text-lg">
+                    <li><strong>Tareas especializadas:</strong> Cuando se requiere un conocimiento muy específico o experiencia.</li>
+                    <li><strong>Situaciones urgentes:</strong> En momentos de alta presión, los individuos con experiencia pueden tomar decisiones rápidas y efectivas.</li>
+                </ul>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 ease-in-out text-[#800033]">
+                <h3 class="text-3xl font-semibold text-[#9B1C1C] mb-4">Concepción global de equipos</h3>
+                <p class="text-lg">Las diferencias culturales afectan la forma en que los equipos se organizan y comunican. Por ejemplo, en culturas colectivistas, los equipos tienden a ser más jerárquicos, mientras que en culturas individualistas, la autonomía es más valorada.</p>
+            </div>
+        </div>
+
+       
+    </div>
+</section>
+
+
+<!-- Lámina 8: Conclusión y Cierre -->
+<section class="min-h-screen flex items-center justify-center p-6 bg-gradient-to-r from-[#800033] to-[#4A001F] text-white" id="lamina8">
+    <div class="max-w-4xl text-center">
+        <h2 class="text-5xl font-extrabold mb-8 animate__animated animate__fadeIn">Conclusión y Cierre</h2>
+        <div class="space-y-6">
+            <h3 class="text-3xl font-semibold mt-8 animate__animated animate__fadeInUp animate__delay-1s">Resumen</h3>
+            <ul class="list-disc list-inside text-lg space-y-4 animate__animated animate__fadeInUp animate__delay-2s">
+                <li><strong>Importancia de los equipos:</strong> Los equipos eficaces son cruciales para el éxito organizacional.</li>
+                <li><strong>Diferencias clave entre equipos y grupos:</strong> Los equipos tienen objetivos comunes y colaboración constante, mientras que los grupos no.</li>
+                <li><strong>Factores para construir equipos eficaces:</strong> Confianza, comunicación clara y un liderazgo sólido son fundamentales.</li>
+            </ul>
+            <h3 class="text-3xl font-semibold mt-8 animate__animated animate__fadeInUp animate__delay-3s">Reflexión Final</h3>
+            <p class="text-lg animate__animated animate__fadeInUp animate__delay-4s">Aplicar estos principios en la vida profesional es clave para el éxito. La capacidad de construir y mantener equipos eficaces es una habilidad esencial en cualquier campo.</p>
+            <h3 class="text-3xl font-semibold mt-8 animate__animated animate__fadeInUp animate__delay-5s">Cierre</h3>
+            <p class="text-lg animate__animated animate__fadeInUp animate__delay-6s">Te invito a aplicar estos conceptos en tu entorno profesional y académico para ver mejoras notables en el rendimiento de tu equipo.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Añadir la librería de animaciones (animate.css) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
