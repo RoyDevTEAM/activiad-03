@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Enlace a la biblioteca Animate.css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <style>
         body {
@@ -135,27 +135,31 @@
 
 
 
-
 <!-- Include Animate.css for animation effects -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-  <!-- Slide 1: Portada -->
+<!-- Slide 1: Portada -->
 <section id="portada" class="h-screen flex items-center bg-gradient-to-r from-[#800033] to-[#4A001F] text-white">
-    <div class="max-w-5xl mx-auto text-center space-y-6 animate__animated animate__fadeIn">
+    <div class="max-w-5xl mx-auto text-center space-y-6 animate__animated animate__fadeIn px-4">
         <h1 class="text-5xl font-extrabold leading-tight">Equipos vs Grupos</h1>
         <p class="text-xl font-medium">Innovación, creatividad, astucia y proactividad</p>
         <ul class="text-left list-disc mx-auto max-w-xl animate__animated animate__fadeIn animate__delay-1s">
             <li><strong>Actividad:</strong> Individual</li>
             <li><strong>Tipo:</strong> Autónomo y Colaborativo</li>
         </ul>
+
+        <!-- Información adicional -->
+        <div class="mt-8 text-lg">
+            <p><strong>Materia:</strong> Liderazgo y Dinámica de Grupo</p>
+            <p><strong>Docente:</strong> Lobzang</p>
+            <p><strong>Participante:</strong> Roider Millares</p>
+            <p><strong>Carrera:</strong> Ingeniería de Sistemas</p>
+        </div>
     </div>
 </section>
 
-
-
 <!-- Slide 3: Objetivos de Aprendizaje -->
 <section id="objetivos" class="h-screen flex items-center bg-gradient-to-r from-[#800033] to-[#4A001F] text-white">
-    <div class="max-w-5xl mx-auto text-left space-y-6 animate__animated animate__fadeInUp">
+    <div class="max-w-5xl mx-auto text-left space-y-6 animate__animated animate__fadeInUp px-4">
         <h2 class="text-4xl font-semibold">Objetivos de Aprendizaje</h2>
         <ul class="list-disc ml-6 space-y-3 animate__animated animate__fadeInUp animate__delay-1s">
             <li>Explicar la creciente popularidad de los equipos en las organizaciones.</li>
@@ -167,10 +171,11 @@
             <li>Concepción global de los equipos.</li>
         </ul>
         <div class="mt-6 flex justify-center">
-            <img src="https://cdni.iconscout.com/illustration/premium/thumb/guia-turistica-esperando-turista-6905537-5673614.png?f=webp" alt="Objetivos" class="rounded-lg shadow-xl">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/guia-turistica-esperando-turista-6905537-5673614.png?f=webp" alt="Objetivos" class="rounded-lg shadow-xl max-w-full h-auto">
         </div>
     </div>
 </section>
+
 <!-- Slide 4: Diferencias entre Equipos y Grupos -->
 <section id="diferencias" class="h-screen flex items-center bg-gradient-to-r from-[#800033] to-[#4A001F] text-white">
     <div class="max-w-5xl mx-auto text-left space-y-6">
@@ -234,14 +239,14 @@
 </section>
 
 <!-- Acordeón dinámico sin Bootstrap, solo con Tailwind CSS y JavaScript -->
-<section id="acordeon" class="bg-white py-12">
+<section id="acordeon" class="bg-white py-12 px-4 md:px-0">
     <div class="max-w-4xl mx-auto text-left">
         <h2 class="text-4xl font-semibold text-[#800033] mb-6">Información Adicional</h2>
         
         <!-- Contenedor del acordeón -->
         <div class="space-y-4">
             <!-- Item 1 del acordeón -->
-            <div class="accordion-item border border-[#800033] rounded-lg">
+            <div class="accordion-item border border-[#800033] rounded-lg overflow-hidden">
                 <button class="accordion-header w-full text-left p-4 bg-[#800033] text-white text-xl font-semibold" onclick="toggleAccordion('collapseOne')">
                     ¿Cómo aplicar lo aprendido?
                 </button>
@@ -251,7 +256,7 @@
             </div>
 
             <!-- Item 2 del acordeón -->
-            <div class="accordion-item border border-[#800033] rounded-lg">
+            <div class="accordion-item border border-[#800033] rounded-lg overflow-hidden">
                 <button class="accordion-header w-full text-left p-4 bg-[#800033] text-white text-xl font-semibold" onclick="toggleAccordion('collapseTwo')">
                     Beneficios de aplicar los principios
                 </button>
@@ -261,7 +266,7 @@
             </div>
 
             <!-- Item 3 del acordeón -->
-            <div class="accordion-item border border-[#800033] rounded-lg ">
+            <div class="accordion-item border border-[#800033] rounded-lg overflow-hidden">
                 <button class="accordion-header w-full text-left p-4 bg-[#800033] text-white text-xl font-semibold" onclick="toggleAccordion('collapseThree')">
                     Casos de éxito
                 </button>
@@ -272,7 +277,6 @@
         </div>
     </div>
 </section>
-
 <!-- Script JavaScript para abrir y cerrar el acordeón -->
 <script>
     function toggleAccordion(id) {
@@ -312,17 +316,17 @@
     </div>
     <div class="w-full">
         <h3 class="text-2xl text-center mb-6">Ejemplo Práctico: Empresas como <strong>Optimus Solutions</strong> logran grandes resultados al promover estos principios en sus equipos.</h3>
-        <div class="carousel relative">
+        <div class="carousel relative w-full">
             <!-- Carrusel de imágenes -->
             <div class="carousel-inner relative w-full overflow-hidden">
-                <div class="carousel-item absolute w-full opacity-0">
-                    <img src="https://us.123rf.com/450wm/graphictoons/graphictoons2406/graphictoons240600526/230854492-concepto-de-trabajo-en-equipo-y-asociaci%C3%B3n-los-empresarios-se-ayudan-entre-s%C3%AD-para-escalar-la.jpg?ver=6" alt="Imagen de equipo de trabajo" class="rounded-xl shadow-xl w-full">
+                <div class="carousel-item opacity-0 absolute w-full">
+                    <img src="https://us.123rf.com/450wm/graphictoons/graphictoons2406/graphictoons240600526/230854492-concepto-de-trabajo-en-equipo-y-asociaci%C3%B3n-los-empresarios-se-ayudan-entre-s%C3%AD-para-escalar-la.jpg?ver=6" alt="Imagen de equipo de trabajo" class="rounded-xl shadow-xl w-full transition-opacity duration-1000 ease-in-out">
                 </div>
-                <div class="carousel-item absolute w-full opacity-0">
-                    <img src="https://us.123rf.com/450wm/mariiasimakova/mariiasimakova2401/mariiasimakova240100092/222478216-ilustraci%C3%B3n-de-inicio-personas-cohete-bombilla-mesa-dise%C3%B1o-gr%C3%A1fico-vectorial-editable.jpg?ver=6" alt="Imagen de colaboración" class="rounded-xl shadow-xl w-full">
+                <div class="carousel-item opacity-0 absolute w-full">
+                    <img src="https://us.123rf.com/450wm/mariiasimakova/mariiasimakova2401/mariiasimakova240100092/222478216-ilustraci%C3%B3n-de-inicio-personas-cohete-bombilla-mesa-dise%C3%B1o-gr%C3%A1fico-vectorial-editable.jpg?ver=6" alt="Imagen de colaboración" class="rounded-xl shadow-xl w-full transition-opacity duration-1000 ease-in-out">
                 </div>
-                <div class="carousel-item absolute w-full opacity-0">
-                    <img src="https://via.placeholder.com/800x400" alt="Imagen de éxito" class="rounded-xl shadow-xl w-full">
+                <div class="carousel-item opacity-0 absolute w-full">
+                    <img src="https://img.freepik.com/vector-gratis/siga-ilustracion-concepto-lider_114360-10886.jpg" alt="Imagen de éxito" class="rounded-xl shadow-xl w-full transition-opacity duration-1000 ease-in-out">
                 </div>
             </div>
             <!-- Controles del carrusel -->
@@ -335,6 +339,59 @@
         </div>
     </div>
 </section>
+<!-- Sección: Cómo generar personas que trabajen en equipo -->
+<section class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#4A001F] to-[#800033] text-white p-8" id="generarEquipo">
+    <div class="max-w-4xl text-center mb-12">
+        <h2 class="text-5xl font-extrabold mb-8">¿Cómo generar personas que trabajen en equipo?</h2>
+        <p class="text-xl mb-6">Para formar equipos efectivos, las organizaciones deben cultivar una cultura de colaboración desde la contratación hasta el desarrollo continuo de sus empleados. Aquí exploramos cómo fomentar este tipo de mentalidad.</p>
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- Tarjetas de consejos -->
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Fomentar la Comunicación Abierta</h3>
+                <p>Un ambiente donde las personas puedan expresarse libremente fomenta la confianza y la cooperación. Crear espacios donde el feedback sea bien recibido y provechoso es clave.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Promover la Diversidad de Pensamiento</h3>
+                <p>Equipos con personas de diferentes antecedentes, habilidades y perspectivas tienen mayor probabilidad de encontrar soluciones innovadoras y eficaces.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Establecer Roles Claros</h3>
+                <p>Cada miembro del equipo debe comprender su rol dentro del grupo y cómo su trabajo contribuye al éxito del equipo. Esto aumenta la eficiencia y reduce los conflictos.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Impulsar la Responsabilidad Colectiva</h3>
+                <p>Los equipos efectivos funcionan cuando todos comparten la responsabilidad de los resultados. Establecer metas claras y medibles ayuda a mantener el enfoque colectivo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Sección: Condiciones en las que los individuos son preferibles a los equipos -->
+<section class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#4A001F] to-[#800033] text-white p-8" id="individuosVsEquipo">
+    <div class="max-w-4xl text-center mb-12">
+        <h2 class="text-5xl font-extrabold mb-8">¿Cuándo son preferibles los individuos sobre los equipos?</h2>
+        <p class="text-xl mb-6">Aunque los equipos pueden ser muy efectivos, hay ciertas situaciones donde los individuos pueden ofrecer una solución más rápida o eficiente.</p>
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- Tarjetas de situaciones -->
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Tareas Especializadas</h3>
+                <p>Cuando una tarea requiere de un alto nivel de especialización o conocimiento técnico, un individuo con la experiencia adecuada puede ser más efectivo que un equipo.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Tiempos Críticos</h3>
+                <p>En situaciones que requieren una toma de decisiones rápida y sin la necesidad de consenso, un individuo puede actuar de manera más ágil que un equipo que necesita coordinarse.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Decisiones Independientes</h3>
+                <p>Cuando la decisión depende de la intuición o el juicio personal, las decisiones individuales pueden ser más efectivas, ya que no requieren la discusión y aprobación de un grupo.</p>
+            </div>
+            <div class="card bg-white text-black rounded-lg shadow-xl p-6 hover:scale-105 transition-transform duration-300">
+                <h3 class="text-2xl font-semibold mb-4">Creatividad y Estilo Propio</h3>
+                <p>Algunas tareas creativas requieren de una visión única. Un individuo con un enfoque innovador puede lograr resultados más sorprendentes que un equipo que debe alinearse.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <!-- Script para el carrusel -->
 <script>
@@ -346,7 +403,7 @@
     function showItem(index) {
         items.forEach((item, i) => {
             item.style.opacity = i === index ? '1' : '0';
-            item.style.transition = 'opacity 0.7s ease-in-out';
+            item.style.transition = 'opacity 1s ease-in-out';
         });
     }
 
@@ -411,7 +468,6 @@
 </section>
 
 <!-- Añadir la librería de animaciones (animate.css) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 
     <script>
@@ -423,10 +479,14 @@
         });
     </script>
 
-
+<!-- Footer -->
+<footer id="contact" class=" text-white py-6  bg-gradient-to-r from-red-800 to-red-600">
+    <div class="max-w-7xl mx-auto text-center">
+        <p>&copy; 2024 Roider Millares. Todos los derechos reservados.</p>
+    </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
