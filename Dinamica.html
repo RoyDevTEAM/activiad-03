@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Equipos Mejorado</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="bg-gray-800 w-64 h-screen p-6 flex flex-col justify-between">
+    <div>
+      <h2 class="text-2xl font-bold mb-4">Juego de Equipos</h2>
+      <img src="https://img.freepik.com/vector-gratis/ilustracion-concepto-liderazgo_114360-10280.jpg" alt="Banner" class="w-full mb-6 rounded">
+    </div>
+    <p class="text-sm text-gray-400">&copy; 2024 Juego de Equipos</p>
+  </aside>
+
+  <!-- Contenido principal -->
+  <main class="flex-1 p-6">
+    <!-- Pestañas -->
+    <div class="mb-6">
+      <button id="tabSetup" class="bg-gray-700 p-3 rounded mr-4">Configuración</button>
+      <button id="tabPlay" class="bg-gray-700 p-3 rounded">Jugar</button>
+    </div>
+
+    <!-- Sección de configuración de jugadores -->
+    <div id="tabSetupContent" class="tab-content active bg-gray-800 p-6 rounded shadow-lg max-w-xl mx-auto">
+      <h1 class="text-3xl font-bold text-center mb-6">Configura tu Juego</h1>
+
+      <label for="numTeams" class="block mb-2 text-lg">Número de equipos:</label>
+      <input id="numTeams" type="number" min="2" value="2" class="w-full p-2 mb-4 bg-gray-700 text-white border border-gray-600 rounded">
+
+      <label for="goal" class="block mb-2 text-lg">Puntaje objetivo:</label>
+      <input id="goal" type="number" min="10" value="30" class="w-full p-2 mb-4 bg-gray-700 text-white border border-gray-600 rounded">
+
+      <div id="teamNamesSection" class="mb-4">
+        <label class="block mb-2 text-lg">Nombres de los equipos:</label>
+        <div id="teamNameInputs"></div>
+      </div>
+
+      <button id="startButton" class="bg-green-500 text-white w-full py-2 rounded mt-4">
+        <i class="fas fa-play"></i> Iniciar Juego
+      </button>
+    </div>
+
+    <!-- Sección del juego -->
+    <div id="tabPlayContent" class="tab-content bg-gray-800 p-6 rounded shadow-lg max-w-xl mx-auto">
+      <h2 class="text-xl font-bold mb-4 text-center">Turno de: <span id="currentTurn" class="text-green-400"></span></h2>
+      <p class="text-lg mb-2">Contador Global: <span id="globalCounter" class="text-yellow-400">0</span> / <span id="goalDisplay" class="text-pink-400">30</span></p>
+
+      <div class="flex justify-center gap-4 mb-6">
+        <button data-value="1" class="add-btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">+1</button>
+        <button data-value="2" class="add-btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">+2</button>
+        <button data-value="3" class="add-btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">+3</button>
+      </div>
+
+      <button id="endButton" class="bg-blue-500 text-white w-full py-2 rounded mt-4">
+        <i class="fas fa-check"></i> Terminar Ronda
+      </button>
+
+      <button id="resetButton" class="bg-red-500 text-white w-full py-2 rounded mt-4">
+        <i class="fas fa-redo"></i> Reiniciar Juego
+      </button>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const startButton = document.getElementById("startButton");
+      const numTeamsInput = document.getElementById("numTeams");
+      const goalInput = document.getElementById("goal");
+      const teamNamesSection = document.getElementById("teamNameInputs");
+      const inputSection = document.getElementById("tabSetupContent");
+      const gameSection = document.getElementById("tabPlayContent");
+      const currentTurnText = document.getElementById("currentTurn");
+      const globalCounterText = document.getElementById("globalCounter");
+      const goalDisplay = document.getElementById("goalDisplay");
+      const addButtons = document.querySelectorAll(".add-btn");
+      const resetButton = document.getElementById("resetButton");
+      const endButton = document.getElementById("endButton");
+      const tabSetup = document.getElementById("tabSetup");
+      const tabPlay = document.getElementById("tabPlay");
+
+      let numTeams = 0;
+      let goal = 0;
+      let teams = [];
+      let currentTurn = 0;
+      let globalCounter = 0;
+
+      // Actualiza los inputs para nombres de equipos
+      function updateTeamNameInputs() {
+        teamNamesSection.innerHTML = '';
+        for (let i = 0; i < numTeams; i++) {
+          const input = document.createElement("input");
+          input.type = "text";
+          input.placeholder = `Nombre del Equipo ${i + 1}`;
+          input.className = "w-full p-2 mb-4 bg-gray-700 text-white border border-gray-600 rounded";
+          teamNamesSection.appendChild(input);
+        }
+      }
+
+      // Cambia entre pestañas
+      tabSetup.addEventListener("click", () => {
+        document.getElementById("tabSetupContent").classList.add("active");
+        document.getElementById("tabPlayContent").classList.remove("active");
+      });
+
+      tabPlay.addEventListener("click", () => {
+        document.getElementById("tabPlayContent").classList.add("active");
+        document.getElementById("tabSetupContent").classList.remove("active");
+      });
+
+      // Inicia el juego
+      startButton.addEventListener("click", () => {
+        numTeams = parseInt(numTeamsInput.value);
+        goal = parseInt(goalInput.value);
+
+        if (numTeams >= 2 && goal >= 10) {
+          goalDisplay.textContent = goal;
+
+          const teamNames = Array.from(teamNamesSection.querySelectorAll("input")).map(input => input.value.trim());
+          if (teamNames.some(name => name === "")) {
+            Swal.fire("Error", "Por favor ingresa todos los nombres de los equipos.", "error");
+            return;
+          }
+
+          // Aseguramos que 'teams' esté correctamente asignado
+          teams = teamNames.map(name => ( {
+            name: name,
+            score: 0,
+          }));
+
+          // Comprueba que hay al menos un equipo antes de continuar
+          if (teams.length > 0) {
+            currentTurn = 0;
+            globalCounter = 0;
+
+            // Verifica que el primer equipo tiene un nombre
+            if (teams[currentTurn]) {
+              currentTurnText.textContent = teams[currentTurn].name;
+            }
+
+            globalCounterText.textContent = globalCounter;
+
+            inputSection.classList.add("hidden");
+            gameSection.classList.remove("hidden");
+            tabPlay.classList.add("bg-green-500");
+            tabSetup.classList.remove("bg-green-500");
+          } else {
+            Swal.fire("Error", "Debes ingresar al menos un equipo.", "error");
+          }
+        } else {
+          Swal.fire("Error", "Ingresa al menos 2 equipos y un puntaje objetivo mayor o igual a 10.", "error");
+        }
+      });
+
+      // Añade puntaje
+      addButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const value = parseInt(e.target.dataset.value);
+          globalCounter += value;
+          teams[currentTurn].score += value;
+
+          globalCounterText.textContent = globalCounter;
+
+          // Bloquea botones
+          addButtons.forEach((button) => {
+            button.disabled = true;
+            button.classList.add("bg-red-500");
+          });
+
+          if (teams[currentTurn].score >= goal) {
+            Swal.fire("¡Victoria!", `¡${teams[currentTurn].name} ganó con ${teams[currentTurn].score} puntos!`, "success");
+            resetGame();
+          } else if (globalCounter > goal) {
+            Swal.fire("¡Te pasaste!", `¡${teams[currentTurn].name} pasó el puntaje objetivo!`, "warning");
+            resetGame();
+          } else {
+            // Cambia turno y desbloquea
+            currentTurn = (currentTurn + 1) % numTeams;
+            currentTurnText.textContent = teams[currentTurn].name;
+
+            setTimeout(() => {
+              addButtons.forEach((button) => {
+                button.disabled = false;
+                button.classList.remove("bg-red-500");
+              });
+            }, 1000);
+          }
+        });
+      });
+
+      // Terminar ronda
+      endButton.addEventListener("click", () => {
+        const winner = teams.find(team => team.score >= goal);
+        if (winner) {
+          Swal.fire("¡Victoria!", `¡${winner.name} ganó con ${winner.score} puntos!`, "success");
+        }
+      });
+
+      // Reinicia el juego
+      resetButton.addEventListener("click", () => {
+        resetGame();
+      });
+
+      // Reinicia el juego a su estado inicial
+      function resetGame() {
+        numTeamsInput.value = 2;
+        goalInput.value = 30;
+        teamNamesSection.innerHTML = '';
+        teams = [];
+        currentTurn = 0;
+        globalCounter = 0;
+        globalCounterText.textContent = globalCounter;
+        currentTurnText.textContent = '';
+        gameSection.classList.add("hidden");
+        inputSection.classList.remove("hidden");
+        tabPlay.classList.remove("bg-green-500");
+        tabSetup.classList.add("bg-green-500");
+      }
+
+      // Actualiza los nombres de los equipos cuando cambia el número de equipos
+      numTeamsInput.addEventListener("input", updateTeamNameInputs);
+      updateTeamNameInputs();  // Llama a la función inicialmente
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruleta Rusa de Cartas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .hidden {
+      display: none;
+    }
+    .roulette-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background-color: #333;
+      border: 5px solid #fff;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    .roulette-cards {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform-origin: center center;
+    }
+    .card {
+      position: absolute;
+      width: 80px;
+      height: 120px;
+      background: #f44336;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      border-radius: 5px;
+      transition: transform 0.5s ease-in-out;
+    }
+    .card:nth-child(1) { transform: rotate(0deg) translateY(-120px); }
+    .card:nth-child(2) { transform: rotate(30deg) translateY(-120px); }
+    .card:nth-child(3) { transform: rotate(60deg) translateY(-120px); }
+    .card:nth-child(4) { transform: rotate(90deg) translateY(-120px); }
+    .card:nth-child(5) { transform: rotate(120deg) translateY(-120px); }
+    .card:nth-child(6) { transform: rotate(150deg) translateY(-120px); }
+    .card:nth-child(7) { transform: rotate(180deg) translateY(-120px); }
+    .card:nth-child(8) { transform: rotate(210deg) translateY(-120px); }
+    .card:nth-child(9) { transform: rotate(240deg) translateY(-120px); }
+    .card:nth-child(10) { transform: rotate(270deg) translateY(-120px); }
+    .card:nth-child(11) { transform: rotate(300deg) translateY(-120px); }
+    .card:nth-child(12) { transform: rotate(330deg) translateY(-120px); }
+
+    .flip-container {
+      perspective: 1000px;
+      display: inline-block;
+    }
+    .flip-card {
+      position: relative;
+      width: 100px;
+      height: 150px;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+    .flip-card .front,
+    .flip-card .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+    .flip-card .front {
+      background: #4CAF50;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+    }
+    .flip-card .back {
+      background: #f44336;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center">
+
+  <!-- Sección de entrada: número de jugadores -->
+  <div id="playerCountSection" class="bg-gray-800 p-6 rounded shadow-lg max-w-xl w-full">
+    <h1 class="text-3xl font-bold text-center mb-6">Ruleta Rusa de Cartas</h1>
+    <label for="numPlayers" class="block mb-2 text-lg">Número de jugadores:</label>
+    <input id="numPlayers" type="number" min="2" value="2" class="w-full p-2 mb-4 bg-gray-700 text-white border border-gray-600 rounded">
+    <button id="nextButton" class="bg-blue-500 text-white w-full py-2 rounded mt-4">Siguiente</button>
+  </div>
+
+  <!-- Sección de entrada: nombres de jugadores -->
+  <div id="playerNamesSection" class="hidden bg-gray-800 p-6 rounded shadow-lg max-w-xl w-full">
+    <h2 class="text-2xl font-bold text-center mb-6">Ingresa los Nombres de los Jugadores</h2>
+    <div id="nameInputsContainer" class="mb-4"></div>
+    <button id="startGameButton" class="bg-green-500 text-white w-full py-2 rounded mt-4">Iniciar Juego</button>
+  </div>
+
+  <!-- Sección del juego: Mezclar y Seleccionar ganador -->
+  <div id="gameSection" class="hidden bg-gray-800 p-6 rounded shadow-lg max-w-xl w-full">
+    <h2 class="text-xl font-bold text-center mb-4">Ruleta Rusa</h2>
+    <div id="roulette" class="roulette-container">
+      <div id="rouletteCards" class="roulette-cards">
+        <!-- Las cartas se generarán aquí dinámicamente -->
+      </div>
+    </div>
+    <button id="shuffleButton" class="bg-blue-500 text-white w-full py-2 rounded mt-4">Mezclar Cartas</button>
+    <button id="drawButton" class="bg-red-500 text-white w-full py-2 rounded mt-4">Sacar un Ganador</button>
+    <p id="winnerText" class="text-center mt-6 text-lg"></p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const nextButton = document.getElementById("nextButton");
+      const numPlayersInput = document.getElementById("numPlayers");
+      const playerCountSection = document.getElementById("playerCountSection");
+      const playerNamesSection = document.getElementById("playerNamesSection");
+      const startGameButton = document.getElementById("startGameButton");
+      const shuffleButton = document.getElementById("shuffleButton");
+      const drawButton = document.getElementById("drawButton");
+      const nameInputsContainer = document.getElementById("nameInputsContainer");
+      const gameSection = document.getElementById("gameSection");
+      const winnerText = document.getElementById("winnerText");
+      const rouletteCardsContainer = document.getElementById("rouletteCards");
+
+      let numPlayers = 0;
+      let players = [];
+      let shuffledPlayers = [];
+
+      function updatePlayerNameInputs() {
+        nameInputsContainer.innerHTML = '';
+        for (let i = 0; i < numPlayers; i++) {
+          const input = document.createElement("input");
+          input.type = "text";
+          input.placeholder = `Nombre del Jugador ${i + 1}`;
+          input.className = "w-full p-2 mb-4 bg-gray-700 text-white border border-gray-600 rounded";
+          nameInputsContainer.appendChild(input);
+        }
+      }
+
+      nextButton.addEventListener("click", () => {
+        numPlayers = parseInt(numPlayersInput.value);
+        if (numPlayers >= 2) {
+          playerCountSection.classList.add("hidden");
+          playerNamesSection.classList.remove("hidden");
+          updatePlayerNameInputs();
+        } else {
+          Swal.fire("Error", "Debes ingresar al menos 2 jugadores.", "error");
+        }
+      });
+
+      startGameButton.addEventListener("click", () => {
+        const playerNames = Array.from(nameInputsContainer.querySelectorAll("input")).map(input => input.value.trim());
+        
+        if (playerNames.some(name => name === "")) {
+          Swal.fire("Error", "Por favor ingresa todos los nombres de los jugadores.", "error");
+          return;
+        }
+
+        players = playerNames.map(name => ({ name }));
+        shuffledPlayers = [...players];
+
+        rouletteCardsContainer.innerHTML = '';
+        shuffledPlayers.forEach((player, index) => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+          card.style.transform = `rotate(${index * 30}deg)`;
+          card.textContent = player.name;
+          rouletteCardsContainer.appendChild(card);
+        });
+
+        playerNamesSection.classList.add("hidden");
+        gameSection.classList.remove("hidden");
+      });
+
+      shuffleButton.addEventListener("click", () => {
+        for (let i = shuffledPlayers.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledPlayers[i], shuffledPlayers[j]] = [shuffledPlayers[j], shuffledPlayers[i]];
+        }
+
+        // Animación de barajar
+        Swal.fire({
+          title: 'Mezclando...',
+          text: 'Las cartas están siendo barajadas',
+          timer: 2000,
+          showConfirmButton: false,
+          didOpen: () => {
+            Swal.showLoading();
+            // Se aplica la animación de la ruleta
+            rouletteCardsContainer.style.transition = "transform 2s ease-out";
+            rouletteCardsContainer.style.transform = `rotate(${Math.random() * 360}deg)`;
+          }
+        });
+
+        setTimeout(() => {
+          Swal.fire('Éxito', 'Las cartas han sido mezcladas.', 'success');
+        }, 2000);
+      });
+
+      drawButton.addEventListener("click", () => {
+        if (shuffledPlayers.length === 0) {
+          Swal.fire("Error", "Por favor, mezcla las cartas antes de sacar un ganador.", "error");
+          return;
+        }
+
+        // Selección de ganador
+        const winner = shuffledPlayers[Math.floor(Math.random() * shuffledPlayers.length)];
+        winnerText.textContent = `El ganador es: ${winner.name}`;
+        shuffledPlayers = shuffledPlayers.filter(player => player !== winner);
+
+        // Animación de selección del ganador
+        Swal.fire({
+          title: `¡El ganador es ${winner.name}!`,
+          text: '¡Felicidades!',
+          icon: 'success',
+          confirmButtonText: 'Genial!'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
